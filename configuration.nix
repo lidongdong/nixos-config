@@ -15,7 +15,7 @@
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "intelligence00"; # Define your hostname.
+  networking.hostName = "spacel"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -44,11 +44,12 @@
   };
 
   # Enable the X11 windowing system.
+  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -78,45 +79,30 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.l = {
+  users.users.ld = {
     isNormalUser = true;
-    description = "l";
+    description = "ld";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kate
+      kdePackages.kate
     #  thunderbird
     ];
-    shell = pkgs.zsh;
   };
 
   # Install firefox.
   programs.firefox.enable = true;
-  programs.zsh.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  zsh
-  neovim
-  git
-  wget
-  # openvpn
-  #  digikam
-  #  gimp
-  #  darktable
-  #  kitty
-  #  zellij
-  #  spacemacs
-  #  qqmusic
-  #  keepass
-  #  nutstore
-  #  wechat
+    wget
+    neovim
+    git
   ];
+
+  environment.variables.EDITOR = "nvim";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

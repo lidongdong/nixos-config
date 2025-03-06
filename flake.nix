@@ -6,7 +6,7 @@
 	};
 
 	outputs = { self, nixpkgs, ...}@inpus: {
-		nixosConfigurations.intelligence00 = nixpkgs.lib.nixosSystem {
+		nixosConfigurations.spacel = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			modules = [
 				./configuration.nix
