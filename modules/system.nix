@@ -11,6 +11,7 @@
     isNormalUser = true;
     description = username;
     extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.zsh;
   };
   # given the users in this list the right to specify additional substituters via:
   #    1. `nixConfig.substituers` in `flake.nix`
@@ -101,6 +102,17 @@
   };
 
   programs.dconf.enable = true;
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      ll = "ls -ltrah";
+    };
+    ohMyZsh = {
+      enable = true;
+      theme = "agnoster";
+      plugins = [ "git" ];
+    };
+  };
 
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -118,6 +130,9 @@
     openFirewall = true;
   };
 
+  environment.variables = {
+    TERMINAL = "kitty";
+  };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -127,6 +142,13 @@
     git
     scrot
     fastfetch
+
+    # SHELL
+    zsh
+    oh-my-zsh
+
+    # TERM
+    kitty
   ];
 
   # Enable sound with pipewire.
