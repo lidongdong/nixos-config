@@ -104,13 +104,23 @@
   programs.dconf.enable = true;
   programs.zsh = {
     enable = true;
+    enableLsColors = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    autosuggestions.strategy = [ "completion" "history" ];
+    syntaxHighlighting.enable = true;
     shellAliases = {
-      ll = "ls -ltrah";
+      ls = "eza";
+      ll = "eza -lt";
     };
     ohMyZsh = {
       enable = true;
       theme = "agnoster";
-      plugins = [ "git" ];
+      plugins = [
+        "git"
+        "fzf"
+        "colored-man-pages"
+      ];
     };
   };
 
@@ -146,6 +156,7 @@
     # SHELL
     zsh
     oh-my-zsh
+    fzf
 
     # TERM
     kitty
