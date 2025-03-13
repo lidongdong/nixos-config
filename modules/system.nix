@@ -66,6 +66,23 @@
     LC_TELEPHONE = "zh_CN.UTF-8";
     LC_TIME = "zh_CN.UTF-8";
   };
+  i18n.inputMethod = {
+    type = "fcitx5";
+    enable = true;
+    fcitx5.addons = with pkgs; [
+      # chinese pinyin support
+      #fcitx5-gtk
+      #kdePackages.fcitx5-qt
+      #kdePackages.fcitx5-chinese-addons
+      #kdePackages.fcitx5-configtool
+      #kdePackages.fcitx5-with-addons
+      fcitx5-nord
+      
+      # rime support
+      fcitx5-rime
+      rime-data
+    ]; 
+  };
 
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.enable = true;
