@@ -7,6 +7,16 @@
   #  ../../home/shell
   ];
 
+  home.packages = with pkgs; [
+    digikam
+    gimp
+    darktable
+    keepass
+    neovim
+    zellij
+    emacs
+  ];
+
   # git 相关配置
   programs.git = {
     userName = "lidongdong";
