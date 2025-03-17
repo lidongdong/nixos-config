@@ -12,7 +12,7 @@
     gimp
     darktable
     keepass
-    neovim
+  #  neovim
     zellij
     emacs
   ];
@@ -29,5 +29,12 @@
     shellIntegration.enableZshIntegration = true;
     keybindings = {
     };
+  };
+
+  programs.neovim = {
+    enable = true;  
+    viAlias = true;
+    vimAlias = true;
+    defaultEditor = true;
   };
 }

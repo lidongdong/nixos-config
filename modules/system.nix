@@ -128,7 +128,7 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       ls = "eza";
-      ll = "eza -lt";
+      ll = "eza -l --sort=modified";
     };
     ohMyZsh = {
       enable = true;
