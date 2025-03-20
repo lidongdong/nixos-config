@@ -157,6 +157,18 @@
     openFirewall = true;
   };
 
+  # davfs2 to mount nutstore (Webdav)
+  services.davfs2 = {
+    enable = true;
+    settings = {
+      sections = {
+        "/home/dd/nutstore" = {
+          ignore_dav_header = 1;
+        };
+      };
+    };
+  };
+
   environment.variables = {
     TERMINAL = "kitty";
   };
@@ -201,4 +213,5 @@
       #media-session.enable = true;
     };
   };
+
 }
