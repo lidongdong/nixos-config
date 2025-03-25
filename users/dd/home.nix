@@ -12,7 +12,6 @@
     gimp
     darktable
     keepass
-  #  neovim
     zellij
     emacs
   ];
@@ -31,10 +30,9 @@
     };
   };
 
-  programs.neovim = {
-    enable = true;  
-    viAlias = true;
-    vimAlias = true;
-    defaultEditor = true;
+  programs.nixvim = {
+    enable = true;
+    colorschemes.catppuccin.enable = true;
+    plugins.lualine.enable = true;
   };
 }

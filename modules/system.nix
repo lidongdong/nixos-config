@@ -145,6 +145,37 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
+  networking.extraHosts = ''
+    10.20.27.200       lidong-tester
+    10.20.26.110       ci.innogrit.com    gitlab.innogrit.com
+    10.20.30.41      inno_essd_011
+    10.20.30.37      inno_essd_012
+    10.20.30.38      inno_essd_013
+    10.20.30.39      inno_essd_014
+    10.20.30.42      inno_essd_015
+    10.20.30.40      assistant001
+    10.20.30.50      inno_essd_021
+    10.20.30.43      inno_essd_023
+    10.20.30.44      inno_essd_025
+    10.20.30.48      inno_essd_026
+    10.20.30.46      assistant002
+    10.20.30.28      inno_essd_031
+    10.20.30.29      inno_essd_032
+    10.20.30.30      inno_essd_033
+    10.20.30.31      inno_essd_034
+    10.20.30.32      inno_essd_035
+    10.20.30.33      inno_essd_037
+    10.20.30.34      inno_essd_038
+    10.20.30.35      inno_essd_039
+    10.20.30.36      assistant003
+    10.20.30.21      inno_essd_041
+    10.20.30.25      inno_essd_042
+    10.20.30.24      inno_essd_043
+    10.20.30.26      inno_essd_044
+    10.20.30.23      inno_essd_045
+    10.20.30.27      assistant004
+    10.20.30.49      inno-essd-pi-008
+  '';
 
   # Enable the OpenSSH daemon.
   services.openssh = {
@@ -181,6 +212,8 @@
     git
     scrot
     fastfetch
+    snipaste
+    wechat-uos
 
     # SHELL
     zsh
@@ -189,11 +222,17 @@
 
     # TERM
     kitty
+
+    obsidian
   ];
 
   # Enable sound with pipewire.
   # sound.enable = true;
   hardware.pulseaudio.enable = false;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
   # services.power-profiles-daemon = {
   #   enable = true;
   # };

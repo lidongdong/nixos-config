@@ -15,13 +15,17 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, nixvim, ... }: {
     nixosConfigurations = {
       um990 = let
         username = "dd";
@@ -41,6 +45,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+	      home-manager.sharedModules = [ nixvim.homeManagerModules.nixvim ];
 
               # 这里的 ryan 也得替换成你的用户名
               # 这里的 import 函数在前面 Nix 语法中介绍过了，不再赘述
