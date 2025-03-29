@@ -129,6 +129,7 @@
     shellAliases = {
       ls = "eza";
       ll = "eza -l --sort=modified";
+      rem = "kitty +kitten ssh l@10.20.27.200";
     };
     ohMyZsh = {
       enable = true;
@@ -184,8 +185,18 @@
       X11Forwarding = true;
       PermitRootLogin = "no"; # disable root login
       PasswordAuthentication = false; # disable password login
+      # HostKeyAlgorithms = "+ssh-rsa";  # 允许服务端使用 ssh-rsa
+      # PubkeyAcceptedAlgorithms = "+ssh-rsa";  # 允许客户端用 ssh-rsa 认证
     };
     openFirewall = true;
+  };
+
+  programs.ssh = {
+    extraConfig = ''
+      Host *
+        HostKeyAlgorithms +ssh-rsa
+        PubkeyAcceptedAlgorithms +ssh-rsa
+    '';
   };
 
   # davfs2 to mount nutstore (Webdav)
